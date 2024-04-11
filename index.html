@@ -11,6 +11,33 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta charset="utf-8"/>
 
+        <script>
+            // Get the canvas element
+            var canvas = document.getElementById('canvas');
+
+            // Get the drawing context
+            var ctx = canvas.getContext('2d');
+
+            // Set canvas width and height
+            function setCanvasSize() {
+                canvas.width = canvas.parentElement.clientWidth; // Adjusted to parent's width
+                canvas.height = window.innerHeight;
+            }
+
+            // Resize canvas when the window is resized
+            window.addEventListener('resize', function() {
+            setCanvasSize();
+            // redraw the canvas content if needed
+            });
+
+            // Set initial canvas size
+            setCanvasSize();
+
+            // Now you can draw on the canvas using 'ctx'
+        </script>
+
+	    
+
         <!-- Builtin injector for disabling cache -->
         <meta http-equiv="pragma" content="no-cache"/>
 
@@ -28,11 +55,13 @@
                 margin: 0px;
                 padding: 0px;
                 border: 0px;
-                width: auto;
                 height: 100%;
             }
 
             canvas {
+                display: block;
+                width: auto;
+                height: 100vh;
                 image-rendering: optimizeSpeed;
                 -webkit-interpolation-mode: nearest-neighbor;
                 -ms-touch-action: none;
@@ -52,6 +81,8 @@
             
             /* Custom Runner Styles */
             div.gm4html5_div_class {
+                display: block;
+                overflow: auto;
                 margin: 0px;
                 padding: 0px;
                 border: 0px;
@@ -91,20 +122,20 @@
     <!-- Custom PreBody code is injected here -->
     
 
-    <body>    
+    <body>
         <div class="gm4html5_div_class" id="gm4html5_div_id">
             
             <!-- Builtin injector for splash screen -->
             
 
             <!-- Create the canvas element the game draws to -->
-            <canvas id="canvas" width="1080" height="1920" style="position: absolute; top: 50%; left: 50%; bottom: -50%; right: -50%; transform: translate(-50%, -50%);">
+            <canvas onload="setCanvasSize();" id="canvas" width="1080" height="1920"">
                 <p>Your browser doesn't support HTML5 canvas.</p>
             </canvas>
         </div>
 
         <!-- Run the game code -->
-        <script type="text/javascript" src="html5game/rifa_michele.js?cachebust=178232761"></script>
+        <script type="text/javascript" src="html5game/rifa_michele.js?cachebust=992318664"></script>
 
         <!-- Builtin injector for injecting runner path -->
         
@@ -112,7 +143,8 @@
         <script>window.onload = GameMaker_Init;</script>
 
         <!-- Builtin injector for injecting google analytics code -->
-            
+        
+        
     </body>
 
     <!-- Custom PostBody code is injected here -->
